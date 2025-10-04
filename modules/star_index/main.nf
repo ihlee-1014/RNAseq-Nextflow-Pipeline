@@ -1,6 +1,6 @@
 #!/usr/bin/bash nextflow
 
-process STAR {
+process STAR_INDEX {
 
     label 'process_high'
     container 'ghcr.io/bf528/star:latest'
