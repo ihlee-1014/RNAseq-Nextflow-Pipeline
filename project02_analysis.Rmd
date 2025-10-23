@@ -2,7 +2,10 @@
 editor_options:
   markdown:
     wrap: 72
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 # Project 2: RNASeq Analysis
@@ -323,7 +326,7 @@ topPathwaysUp <- fgseaRes[ES > 0][head(order(padj), n=10), pathway]
 topPathwaysDown <- fgseaRes[ES < 0][head(order(padj), n=10), pathway]
 topPathways <- c(topPathwaysUp, rev(topPathwaysDown))
 plotGseaTable(pathways[topPathways], rnk_list, fgseaRes, 
-              gseaParam=0.5)
+              gseaParam=0.5, pathwayLabelStyle=list(size=5))
 ```
 
 The results of the FGSEA analysis show that the top most significant upregulated 
