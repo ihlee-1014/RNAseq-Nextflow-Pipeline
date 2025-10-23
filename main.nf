@@ -12,10 +12,14 @@ workflow {
     Channel.fromFilePairs(params.reads)
     | set { align_ch }
 
+    //Channel.fromFilePairs(params.reads).set { align_ch }
+
     // separate into single-reads for FASTQC
     fastqc_ch = align_ch
         .flatMap { sample_id, reads -> reads.collect { read -> tuple(sample_id, read)}}
-    
+        
+    //Channel.fromFilePairs(params.reads).transpose().set{ fastqc_ch }
+
     FASTQC(fastqc_ch)
 
     // build STAR genome index
