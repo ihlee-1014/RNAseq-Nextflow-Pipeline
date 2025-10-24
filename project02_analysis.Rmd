@@ -558,7 +558,9 @@ focus (i.e. upregulated signaling by receptor tyrosine kinases, downregulated
 beta-cell development and regulation of gene expression in beta-cells). Since our 
 analyses were performed based on a more holistic perspective, our results may not
 be as specific as those of the original publication and are thus less focused on
-TYK2 and beta-cells.
+TYK2 and beta-cells. Overall, our project only includes data from the S5 stage 
+of the original publication, which can explain some differences in our results. 
+These differences may also be due to using different GMT pathway files.
 
 ### Session Info
 
