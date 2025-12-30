@@ -1,17 +1,31 @@
-# Project 2: RNAseq
+# RNAseq Nextflow Pipeline
 
-Please refer to the [instructions](https://bu-bioinfo.github.io/bf528/projects/project_2_rnaseq/)
-on the website for how to complete project 2. 
+The following README contains directions on how to run the RNAseq Nextflow pipeline.  
 
-# Reminders
-- The week divisions in the directions are just suggestions for a reasonable amount of progress. The
-final report will be due on the listed date in the schedule.
+Our final project is based on [Chandra et al. 2022](https://doi.org/10.1038/s41467-022-34069-z),
+which is focused on tyrosine kinase 2 (TYK2) knockout during pancreatic cell differentiation via RNAseq. In this project, we specifically reproduce the RNA-Sequencing and Differential Expression Sequencing analysis techniques in S5 of the reference publication, examine significant genes and pathways, and compare results to the original publication.  
 
-- I will make sample results available partway through the project to ensure that everyone can proceed to the biological analysis at some point. I will also reveal the original publication around
-this time so that you may compare your findings 
+This repository consists of the following files:  
 
-- Only switch to the full data when you are 100% sure your pipeline works end-to-end. Please also
-make sure that you only run your pipeline once on the full data and to delete any old runs if you do
-happen to run it multiple times.
+| File(s) | Path | Description |
+| :------- | :------ | :------- |
+| Nextflow Pipeline     | `main.nf` | Consists of a full Nextflow pipeline that processes the RNAseq data from Chandra et al. 2022.    |
+| RMarkdown Analysis  | `project02_analysis.Rmd`   | Consists of an RMarkdown report that runs analyses on our RNAseq data.   |
+| RMarkdown Analysis HTML | `project02_analysis.html` | Consists of our RNAseq report in `.html` format. |
+| RMarkdown Analysis PDF | `project02_analysis.pdf` | Consists of our RNAseq report in `.pdf` format. |
+| GTF Parser | `bin/gtf_extract.py` | Consists of a Python script that extracts Ensembl IDs and gene names from our GTF file. |
+| VERSE Concatenator | `bin/verse_concat.py` | Consists of a Python script that concatenates VERSE exon count files into a single counts matrix. |
+| Nextflow Modules | `modules/` | Consists of all Nextflow modules and their `main.nf` files used to run the pipeline. |
+| Nextflow Configuration | `nextflow.config` | Consists of all parameters and settings used to run the Nextflow pipeline. |  
+| Significant Upregulated Genes List | `upreg_sig_genes.txt` | Consists of a list of all significant upregulated genes from our RMarkdown analysis. |
+| Significant Downregulated Genes List | `downreg_sig_genes.txt` | Consists of a list of all significant downregulated genes from our RMarkdown analysis. |
+| C2 Canonical Pathways | `c2.cp.v2025.1.Hs.symbols.gmt` | Consists of a gene set file from GSEA MSIGDB used for FGSEA analysis. |
 
-- Be mindful of time and make sure that you don't fall too behind. Please reach out to the TAs or myself if you do find yourself struggling and unable to advance. 
+Steps to successfully run the pipeline:
+1. To run the Nextflow pipeline, please run the command:
+```
+nextflow run main.nf -profile singularity,local
+```
+2. Run the R Diffbind analysis.  
+
+Feel free to change any file paths if necessary.
